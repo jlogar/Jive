@@ -2,17 +2,16 @@ module Jive
 
 open FSharp.Data
 open System.IO
-open System
 
 [<Literal>]
-let InputSrc = __SOURCE_DIRECTORY__ + @"\..\input-example.csv"
+let InputSrc = __SOURCE_DIRECTORY__ + @"\input-example.csv"
 
 type Csv = CsvProvider< InputSrc, ";",PreferOptionals=true>
 type Month = int
 type Year = int
 type MonthInYear = {month: Month;  year: Year}
 let rec last = function
-        | hd :: [] -> hd
+        | [hd] -> hd
         | _ :: tl -> last tl
         | _ -> failwith "Empty list."
 
@@ -24,7 +23,7 @@ let rec win12 (agg: 'a list list) = function
         | _ -> failwith "empty"
 [<EntryPoint>]
 let main args =
-    if args.Length <> 1 then failwith "invalid args"
+    if args.Length <> 1 then failwith "invalid args, expected dir name for CSV files containing invoices (invoice-sent*.csv)"
     let dir = args|>Array.head
     let files = Directory.EnumerateFiles(dir, "invoice-sent*.csv")
     printf "read %d from %s" (files|>Seq.length) dir

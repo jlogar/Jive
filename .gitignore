@@ -382,9 +382,7 @@ _Pvt_Extensions
 
 # Paket dependency manager
 paket-files/
-.paket/
-!.paket/paket.bootrapper.exe
-
+.paket/Paket.Restore.targets
 packages/
 
 # FAKE - F# Make
