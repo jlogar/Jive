@@ -1,6 +1,6 @@
 source https://www.nuget.org/api/v2
 
-framework: >= net461
+framework: >= netcoreapp2.1
 nuget FSharp.Core
 nuget FSharp.Data
 nuget System.ValueTuple
